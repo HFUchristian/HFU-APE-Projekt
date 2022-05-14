@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:WPF_Binding_Textboxen"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <StackPanel.DataContext>
-            <local:PersonViewModel/>
-        </StackPanel.DataContext>
+    <Window.Resources>
+        <local:PersonViewModel x:Key="Vm"/>
+    </Window.Resources>
+    <StackPanel DataContext="{Binding Source={StaticResource Vm}}">
         <StackPanel Orientation="Horizontal">
             <Label>Name</Label>
             <TextBox Text="{Binding Person.Name}"></TextBox>
