@@ -11,15 +11,15 @@
             <local:PersonViewModel x:Key="Vm"/>
         </StackPanel.Resources>
         <StackPanel Orientation="Horizontal">
-                <Label>Label1</Label>
+                <Label>Name</Label>
                 <TextBox DataContext="Vm" Text="{Binding    }"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label>Label2</Label>
+                <Label>Vorname</Label>
                 <TextBox>textbox2</TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label>Label3</Label>
+                <Label>Alter</Label>
                 <TextBox>textbox3</TextBox>
             </StackPanel>
         </StackPanel>
