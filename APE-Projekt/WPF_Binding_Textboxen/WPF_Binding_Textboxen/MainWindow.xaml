@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <StackPanel.Resources>
-            <local:PersonViewModel x:Key="Vm"/>
-        </StackPanel.Resources>
+        <StackPanel.DataContext>
+            <local:PersonViewModel/>
+        </StackPanel.DataContext>
         <StackPanel Orientation="Horizontal">
-                <Label>Name</Label>
-                <TextBox DataContext="Vm" Text="{Binding    }"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label>Vorname</Label>
-                <TextBox>textbox2</TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label>Alter</Label>
-                <TextBox>textbox3</TextBox>
-            </StackPanel>
+            <Label>Name</Label>
+            <TextBox Text="{Binding Person.Name}"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Vorname</Label>
+            <TextBox>textbox2</TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Alter</Label>
+            <TextBox>textbox3</TextBox>
+        </StackPanel>
         </StackPanel>
 </Window>
