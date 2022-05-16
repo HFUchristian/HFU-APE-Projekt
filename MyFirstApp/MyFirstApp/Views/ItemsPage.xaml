@@ -4,7 +4,8 @@
              x:Class="MyFirstApp.Views.ItemsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:MyFirstApp.ViewModels"  
-             xmlns:model="clr-namespace:MyFirstApp.Models"  
+             xmlns:model="clr-namespace:MyFirstApp.Models"
+             x:DataType="local:ItemsViewModel"
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
@@ -29,6 +30,10 @@
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" />
+                        <Label Text="{Binding Description2}" 
+                               LineBreakMode="NoWrap"
+                               Style="{DynamicResource ListItemDetailTextStyle}"
+                               FontSize="13" />
                         <Label Text="{Binding Age}" 
                                LineBreakMode="NoWrap" 
                                Style="{DynamicResource ListItemTextStyle}" 

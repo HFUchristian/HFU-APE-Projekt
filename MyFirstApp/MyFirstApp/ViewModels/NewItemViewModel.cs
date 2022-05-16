@@ -11,6 +11,7 @@ namespace MyFirstApp.ViewModels
     {
         private string text;
         private string description;
+        private string description2;
         private int age;
 
         public NewItemViewModel()
@@ -39,6 +40,12 @@ namespace MyFirstApp.ViewModels
             set => SetProperty(ref description, value);
         }
 
+        public string Description2
+        {
+            get => description2;
+            set => SetProperty(ref description2, value);
+        }
+
         public int Age
         {
             get => age;
@@ -60,7 +67,8 @@ namespace MyFirstApp.ViewModels
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
                 Description = Description,
-                Age = Age,
+                Description2 = Description2,
+                Age = Age
             };
 
             await DataStore.AddItemAsync(newItem);

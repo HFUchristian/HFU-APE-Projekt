@@ -9,9 +9,14 @@ namespace MyFirstApp.ViewModels
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class ItemDetailViewModel : BaseViewModel
     {
+        public ItemDetailViewModel()
+        {
+            Title = "Item";
+        }
         private string itemId;
         private string text;
         private string description;
+        private string description2;
         private int age;
         public string Id { get; set; }
 
@@ -31,6 +36,12 @@ namespace MyFirstApp.ViewModels
         {
             get => description;
             set => SetProperty(ref description, value);
+        }
+
+        public string Description2
+        {
+            get => description2;
+            set => SetProperty(ref description2, value);
         }
 
         public string ItemId
@@ -54,7 +65,9 @@ namespace MyFirstApp.ViewModels
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;
+                Description2 = item.Description2;
                 Age = item.Age;
+                Title = Text;
             }
             catch (Exception)
             {
