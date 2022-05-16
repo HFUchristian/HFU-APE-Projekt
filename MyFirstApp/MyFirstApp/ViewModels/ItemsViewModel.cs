@@ -17,6 +17,8 @@ namespace MyFirstApp.ViewModels
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
 
+        public Command ShowMessage { get; }
+
         public ItemsViewModel()
         {
             Title = "Browse";
@@ -26,6 +28,16 @@ namespace MyFirstApp.ViewModels
             ItemTapped = new Command<Item>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
+
+            ShowMessage = new Command<Page>(async page =>
+            {
+                var result = await page.DisplayAlert("Confirm", "are your sure?", "yes", "no");
+                if (result)
+                {
+
+                }
+
+            });
         }
 
         async Task ExecuteLoadItemsCommand()

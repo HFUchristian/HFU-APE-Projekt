@@ -6,10 +6,12 @@
              xmlns:local="clr-namespace:MyFirstApp.ViewModels"  
              xmlns:model="clr-namespace:MyFirstApp.Models"
              x:DataType="local:ItemsViewModel"
-             x:Name="BrowseItemsPage">
+             x:Name="Page">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="Message" Command="{Binding ShowMessage}"
+             CommandParameter="{x:Reference Page}"/>
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
