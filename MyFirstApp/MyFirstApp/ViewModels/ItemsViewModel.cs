@@ -34,7 +34,7 @@ namespace MyFirstApp.ViewModels
                 var result = await page.DisplayAlert("Confirm", "are your sure?", "yes", "no");
                 if (result)
                 {
-
+                    Items.Remove(Items[0]);
                 }
 
             });
