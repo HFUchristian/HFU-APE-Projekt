@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using MyFirstApp.Services;
 using Xamarin.Forms;
 
 namespace MyFirstApp.ViewModels
@@ -35,8 +36,8 @@ namespace MyFirstApp.ViewModels
                 if (result)
                 {
                     Items.Remove(Items[0]);
+                    DependencyService.Get<INotificationService>().Show("Item gelöscht", "Sie haben soeben ein Item gelöscht");
                 }
-
             });
         }
 
