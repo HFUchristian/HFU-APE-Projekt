@@ -13,6 +13,7 @@ namespace MyFirstApp.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
+            
         }
 
         private async void OnLoginClicked(object obj)
