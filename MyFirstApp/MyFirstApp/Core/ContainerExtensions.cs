@@ -3,13 +3,12 @@
 // </copyright>
 
 using System;
-using System.Net.Http;
+using JetBrains.Annotations;
 using MyFirstApp.Models;
 using MyFirstApp.Services;
-using JetBrains.Annotations;
 using SimpleInjector;
 
-namespace Albums.Core
+namespace MyFirstApp.Core
 {
   public static class ContainerExtensions
   {
