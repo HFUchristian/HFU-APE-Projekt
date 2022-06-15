@@ -14,51 +14,51 @@ namespace MyFirstApp.Services
   public class SQLiteDataStore<T> : IDataStore<T>
     where T : new()
   {
-    public SQLiteDataStore()
-    {
-      var options = new SQLiteConnectionString(DatabasePath);
-      _connection = new SQLiteAsyncConnection(options);
-    }
-
-    public async Task Initialize()
-    {
-      // Check whether our table already exists. If not, we're creating it here.
-      if (_connection.TableMappings.All(x => !x.TableName.Equals(typeof(T).Name, StringComparison.InvariantCultureIgnoreCase)))
+      public SQLiteDataStore()
       {
-        await _connection.CreateTableAsync<T>();
+          var options = new SQLiteConnectionString(DatabasePath);
+          _connection = new SQLiteAsyncConnection(options);
       }
-    }
 
-    public async Task<bool> AddItemAsync(T item)
-    {
-      return await _connection.InsertAsync(item) == 1;
-    }
+      public async Task Initialize()
+      {
+          // Check whether our table already exists. If not, we're creating it here.
+          if (_connection.TableMappings.All(x => !x.TableName.Equals(typeof(T).Name, StringComparison.InvariantCultureIgnoreCase)))
+          {
+              await _connection.CreateTableAsync<T>();
+          }
+      }
 
-    public async Task<bool> DeleteItemAsync(string id)
-    {
-      return await _connection.DeleteAsync<T>(id) == 1;
-    }
+      public async Task<bool> AddItemAsync(T item)
+      {
+          return await _connection.InsertAsync(item) == 1;
+      }
 
-    public Task<T> GetItemAsync(string id)
-    {
-      return _connection.GetAsync<T>(id);
-    }
+      public async Task<bool> DeleteItemAsync(string id)
+      {
+          return await _connection.DeleteAsync<T>(id) == 1;
+      }
 
-    public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
-    {
-      return await _connection.Table<T>().ToListAsync();
-    }
+      public Task<T> GetItemAsync(string id)
+      {
+          return _connection.GetAsync<T>(id);
+      }
 
-    public async Task<bool> UpdateItemAsync(T item)
-    {
-      return await _connection.UpdateAsync(item) == 1;
-    }
+      public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
+      {
+          return await _connection.Table<T>().ToListAsync();
+      }
 
-    private SQLiteAsyncConnection _connection;
+      public async Task<bool> UpdateItemAsync(T item)
+      {
+          return await _connection.UpdateAsync(item) == 1;
+      }
 
-    /// <summary>
-    /// Gets the static path to the database. The <see cref="Environment.SpecialFolder"/> is used to resolve the right path.
-    /// </summary>
-    private static string DatabasePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Items.db3");
+      private SQLiteAsyncConnection _connection;
+
+      /// <summary>
+      /// Gets the static path to the database. The <see cref="Environment.SpecialFolder"/> is used to resolve the right path.
+      /// </summary>
+      private static string DatabasePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Albums.db3");
   }
 }

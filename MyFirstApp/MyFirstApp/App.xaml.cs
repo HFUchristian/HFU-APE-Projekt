@@ -1,6 +1,9 @@
 ﻿using MyFirstApp.Services;
 using MyFirstApp.Views;
 using System;
+using Albums.Core;
+using MyFirstApp.Models;
+using SimpleInjector;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,10 +16,13 @@ namespace MyFirstApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            var dataStore = Services.GetInstance<IDataStore<Item>>();
+
+            dataStore.Initialize();
+
             MainPage = new AppShell();
         }
-
+        public static Container Services { get; private set; }
         protected override void OnStart()
         {
         }
